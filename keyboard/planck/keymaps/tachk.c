@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RS] = { /* LAYER 1: NUM, BRACKETS, ETC. LAYER */
       {KC_GRV,   KC_1,                   KC_2,           KC_3,       KC_4,       KC_5,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC },
       {KC_NO,    KC_NO,                  KC_NO,          KC_NO,      KC_NO,      KC_PLUS, KC_MINS, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_BSLS },
-      {KC_LSFT,  LCTL(LSFT(KC_TAB)),     LCTL(KC_TAB),   LCTL(KC_C), LCTL(KC_V), KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_ENT  },
+      {KC_LSFT,  LCTL(LSFT(KC_TAB)),     LCTL(KC_TAB),   KC_COPY,    KC_PASTE,   KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_ENT  },
       {KC_NO,    KC_NO,                  KC_NO,          KC_NO,      TG(1),      KC_SPC,  KC_SPC,  TG(3),    KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R }
     },
     [_CM] = { /* LAYER 3: COLEMAK ALPHAS LAYER */
@@ -75,9 +75,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
           }
           break;
 
-        case 2: /* Macro: Type exclamation mark (to help warn when on RESET layer) */
+        case 2: /* Macro: Type warning message to help warn when on RESET layer) */
           if (record->event.pressed) {
-              return MACRO( I(25), T(LSFT(1)), W(50), END );
+              return MACRO( I(25), T(N), T(O), T(P), T(E), T(DOT), W(50), END ); // Error when chaining mod keys here...
           }
           break;
     }
